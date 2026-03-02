@@ -1,0 +1,25 @@
+# Unity asset files should always use LF line endings
+*.anim text eol=lf
+*.asmdef text eol=lf
+*.asset text eol=lf
+*.controller text eol=lf
+*.mat text eol=lf
+*.meta text eol=lf
+*.overrideController text eol=lf
+*.prefab text eol=lf
+*.preset text eol=lf
+*.spriteatlas text eol=lf
+*.unity text eol=lf
+*.mixer text eol=lf
+*.renderTexture text eol=lf
+*.inputactions text eol=lf
+*.asmdef text eol=lf
+*.scenetemplate text eol=lf
+*.lighting text eol=lf
+
+# C# and solution files should use OS-specific line endings (CRLF on Windows)
+*.cs text eol=crlf
+*.sln text eol=crlf
+*.csproj text eol=crlf
+*.json text eol=crlf
+*.xml text eol=crlf
