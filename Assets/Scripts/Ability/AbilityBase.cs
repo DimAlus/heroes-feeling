@@ -7,17 +7,14 @@ public enum EAbilityTargetFinder {
   MovementDirection, NearestEnemy, LookDirection
 }
 
-public enum EAbilityTarget {
-  None, Enemy, Friend
-}
 
 
 [System.Serializable]
 public struct FAbilityData {
   public float Cooldown;
-  public float Damage;
+  public FEffectData[] Effects;
+  public FEffectData[] SelfEffects;
   public EAbilityTargetFinder TargetFinderType;
-  public EAbilityTarget TargetType;
   public ETag TagsInclude;
   public ETag[] TagsExclude;
 }
@@ -25,6 +22,8 @@ public struct FAbilityData {
 public class AbilityBase : MonoBehaviour {
 
   private AbilityAnimation aanimation;
+
+  private Entity Owner;
 
   public FAbilityData data { get; private set; }
 
@@ -45,6 +44,7 @@ public class AbilityBase : MonoBehaviour {
       Initialize(ref dt);
     }
     aanimation = GetComponent<AbilityAnimation>();
+    Owner = GetComponentInParent<Entity>();
   }
 
 
@@ -106,13 +106,20 @@ public class AbilityBase : MonoBehaviour {
   public virtual void Activate() {
     cooldown = data.Cooldown;
     aanimation?.StartAnimation();
+    foreach (FEffectData data in data.SelfEffects) {
+      Entity.ApplyEffect(Owner, data);
+    }
   }
 
 
   public virtual void ApplyEffects(Entity entity) {
     if (entity.TagContainer.TagsAgreement(data.TagsInclude, data.TagsExclude)) {
-      entity.Health.ApplyDamage(data.Damage);
+      foreach (FEffectData data in data.Effects) {
+        Entity.ApplyEffect(entity, data);
+      }
     }
   }
+
+
 
 }

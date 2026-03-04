@@ -43,3 +43,32 @@ public enum EAbilitySlot {
   Primary, Secondary,
   Dash
 }
+
+
+[Flags]
+public enum EEffectType {
+  MovementLock      = 0b_0000_0001,
+  LookLock          = 0b_0000_0010,
+  Damage            = 0b_0000_0100,
+  Slowing           = 0b_0000_1000,
+  Impulse           = 0b_0001_0000,
+
+  [InspectorName(null)]
+  Tickable = Damage,
+}
+
+
+public struct FEffectData {
+  public enum EEffectDuration {
+    Impact, Periodic, Infinity
+  }
+
+  public EEffectType Type;
+  public float Power;
+  public EEffectDuration DurationType;
+  public float Duration;
+
+  public float Tick(float DeltaTime) {
+    return Duration -= DeltaTime;
+  }
+}

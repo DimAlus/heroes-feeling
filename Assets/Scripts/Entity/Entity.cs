@@ -33,4 +33,8 @@ public class Entity : MonoBehaviour {
     OnDeath?.Invoke();
     Destroy(gameObject);
   }
+
+
+  static public void ApplyEffect(Entity target, FEffectData effect) {
+  }
 }

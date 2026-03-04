@@ -3,65 +3,144 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum EEffectType {
-  MovementLock, LookLock
-}
-
 
 public class EffectHaver : MonoBehaviour {
 
-  private struct EffectPeriod {
-    public EEffectType Effect;
-    public float Time;
-
-    public EffectPeriod(EEffectType effect, float time) {
-      Effect = effect;
-      Time = time;
-    }
+  private enum EEffectApplyContext {
+    Apply, Tick, Cancel
   }
 
-  private Dictionary<EEffectType, int> ConstEffects = new Dictionary<EEffectType, int>();
-  private Dictionary<EEffectType, int> PeriodicEffectsCount = new Dictionary<EEffectType, int>();
-  private LinkedList<EffectPeriod> PeriodicEffects = new LinkedList<EffectPeriod>();
+  private Entity entity;
+
+  private EEffectType CurrentPeriodicEffects;
+  private EEffectType CurrentInfinityEffects;
+  private Dictionary<EEffectType, int> InfinityEffects = new Dictionary<EEffectType, int>();
+  private LinkedList<FEffectData> PeriodicEffects = new LinkedList<FEffectData>();
 
   private void Awake() {
-    foreach (EEffectType effect in Enum.GetValues(typeof(EEffectType))) {
-      ConstEffects.Add(effect, 0);
-      PeriodicEffectsCount.Add(effect, 0);
-    }
+    entity = GetComponent<Entity>();
   }
 
 
   private void FixedUpdate() {
-    var iter = PeriodicEffects.First;
+    EEffectType currentEffects = 0;
 
+    var iter = PeriodicEffects.First;
     while (iter != null) {
-      if (iter.Value.Time - Time.fixedDeltaTime <= 0) {
-        PeriodicEffectsCount[iter.Value.Effect] -= 1;
+      if (iter.Value.Tick(Time.fixedDeltaTime) <= 0) {
         PeriodicEffects.Remove(iter);
+        ApplyEffectActionCancel(iter.Value);
       } else {
-        iter.Value = new EffectPeriod(iter.Value.Effect, iter.Value.Time - Time.fixedDeltaTime);
+        currentEffects = currentEffects | iter.Value.Type;
+        ApplyEffectActionTick(iter.Value);
       }
     }
   }
 
 
-  public void ApplyEffect(EEffectType effect) {
-    ConstEffects[effect] += 1;
+  public void ApplyEffect(FEffectData effect) {
+    if (effect.DurationType == FEffectData.EEffectDuration.Periodic) {
+      ApplyEffectActionStart(effect);
+      PeriodicEffects.AddLast(effect);
+    } else if (effect.DurationType == FEffectData.EEffectDuration.Infinity) {
+      ApplyEffectActionStart(effect);
+      if (InfinityEffects.ContainsKey(effect.Type)) {
+        InfinityEffects[effect.Type] += 1;
+      } else {
+        InfinityEffects.Add(effect.Type, 1);
+      }
+      CurrentInfinityEffects |= effect.Type;
+    } else {
+      ApplyEffectActionInstant(effect);
+    }
   }
 
 
-  public void RemoveEffect(EEffectType effect) {
-    ConstEffects[effect] = Math.Max(0, ConstEffects[effect] - 1);
+  private void ApplyEffectActionInstant(FEffectData effect) {
+    switch (effect.Type) {
+    case (EEffectType.Damage):
+
+      entity.Health.ApplyDamage(effect.Power);
+      break;
+
+    case EEffectType.Impulse:
+      break;
+
+    case EEffectType.Slowing:
+    case EEffectType.MovementLock:
+    case EEffectType.LookLock:
+    default:
+      break;
+    }
   }
 
-  public void ApplyPeriodicalEffect(EEffectType effect, float time) {
-    PeriodicEffects.AddLast(new EffectPeriod(effect, time));
-    PeriodicEffectsCount[effect] += 1;
+
+  private void ApplyEffectActionStart(FEffectData effect) {
+    switch (effect.Type) {
+    case (EEffectType.Damage):
+
+      entity.Health.ApplyDamage(effect.Power);
+      break;
+
+    case EEffectType.Impulse:
+      break;
+
+    case EEffectType.Slowing:
+    case EEffectType.MovementLock:
+    case EEffectType.LookLock:
+    default:
+      break;
+    }
+  }
+
+  private void ApplyEffectActionTick(FEffectData effect) {
+    switch (effect.Type) {
+    case (EEffectType.Damage):
+
+      entity.Health.ApplyDamage(effect.Power);
+      break;
+
+    case EEffectType.Impulse:
+      break;
+
+    case EEffectType.Slowing:
+    case EEffectType.MovementLock:
+    case EEffectType.LookLock:
+    default:
+      break;
+    }
+  }
+
+  private void ApplyEffectActionCancel(FEffectData effect) {
+    switch (effect.Type) {
+    case (EEffectType.Damage):
+
+      entity.Health.ApplyDamage(effect.Power);
+      break;
+
+    case EEffectType.Impulse:
+      break;
+
+    case EEffectType.Slowing:
+    case EEffectType.MovementLock:
+    case EEffectType.LookLock:
+    default:
+      break;
+    }
   }
 
 
-  public bool HasEffect(EEffectType effect) {
-    return ConstEffects[effect] > 0 || PeriodicEffectsCount[effect] > 0;
+  public void RemoveInfinityEffect(EEffectType effectType) {
+    if (InfinityEffects.ContainsKey(effectType)) {
+      InfinityEffects[effectType] = Math.Max(0, InfinityEffects[effectType] - 1);
+      if (InfinityEffects[effectType] == 0) {
+        CurrentInfinityEffects &= ~effectType;
+      }
+    }
+  }
+
+
+  public bool HasEffect(EEffectType effectType) {
+    return ((CurrentPeriodicEffects | CurrentInfinityEffects) & effectType) > 0;
   }
 }
