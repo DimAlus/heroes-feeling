@@ -9,7 +9,7 @@ public class TargetFinderBase : MonoBehaviour {
   }
 
 
-  public virtual Vector3 FindTarget(EAbilityTarget target, EAbilityTargetFinder finder) {
+  public virtual Vector3 FindTarget(EAbilityTargetFinder finder) {
     if (finder == EAbilityTargetFinder.LookDirection) {
       return transform.position + (Vector3)movement.LookDirection;
     } else if (finder == EAbilityTargetFinder.MovementDirection) {

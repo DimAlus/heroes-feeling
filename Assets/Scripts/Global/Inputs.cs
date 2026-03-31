@@ -25,6 +25,7 @@ public class Inputs : MonoBehaviour {
 
     ActionsAbilityMap = new Dictionary<EAbilitySlot, UnityEngine.InputSystem.InputAction> {
       { EAbilitySlot.Primary, input.Player.Attack },
+      { EAbilitySlot.Secondary, input.Player.Secondary },
     };
     InitializeAbilitiesInputs();
   }

@@ -9,6 +9,8 @@ public class Health : MonoBehaviour {
   public float MaxHealth { get => maxHealth; }
   public float CurrentHealth { get; private set; }
 
+  public bool bDead = false;
+
 
   public event FFloatSignature OnHealthChanging;
 
@@ -18,15 +20,26 @@ public class Health : MonoBehaviour {
   }
 
   private void Start() {
+    maxHealth = entity.EntityData.Health.MaxHealth;
     CurrentHealth = MaxHealth;
   }
 
 
-  public void ApplyDamage(float damage) {
-    CurrentHealth -= damage;
+  public void ApplyDamage(float damage, FAbilityContext context) {
+    if (bDead) {
+      return;
+    }
+    CurrentHealth = Mathf.Min(CurrentHealth - damage, MaxHealth);
     OnHealthChanging?.Invoke(CurrentHealth);
     if (CurrentHealth <= 0) {
-      entity.Destroy();
+      bDead = true;
+      if (context.Ability != null) {
+        context.Ability.OnKill(entity, context);
+      }
+      if (context.Owner != null) {
+        context.Owner.OnKill(entity, context);
+      }
+      entity.Dead(context);
     }
   }
 }

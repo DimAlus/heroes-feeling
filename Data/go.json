@@ -1,0 +1,42 @@
+{
+  "Slime": {
+    "Health": {
+      "MaxHealth": 20
+    },
+    "Movement": {
+      "Speed": 2,
+      "SprintSpeed": 20
+    },
+    "Ability": {
+      "Abilities": {
+        "Primary": {
+          "Autoactivate": true,
+          "Ability": "DamageAura"
+        },
+        "Death": {
+          "Ability": "DeadBomb"
+        }
+      }
+    }
+  },
+  "Player": {
+    "Health": {
+      "MaxHealth": 20
+    },
+    "Movement": {
+      "Speed": 2
+    },
+    "Ability": {
+      "Abilities": {
+        "Primary": {
+          "Cooldown": 0.3,
+          "Ability": "Sword"
+        },
+        "Secondary": {
+          "Cooldown": 0.4,
+          "Ability": "ArrowShut"
+        }
+      }
+    }
+  }
+}

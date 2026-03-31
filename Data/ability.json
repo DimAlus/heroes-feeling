@@ -1,0 +1,116 @@
+{
+  "Sword": {
+    "PrefabName": "Sword",
+    "Appliers": [
+      {
+        "Context": "SelfActivate",
+        "Effects": [
+          {
+            "DurationType": "Infinity",
+            "Type": "LookLock"
+          }
+        ]
+      },
+      {
+        "Context": "TargetHit",
+        "TagsInclude": "Enemy",
+        "Effects": [
+          {
+            "DurationType": "Impact",
+            "Type": "Damage",
+            "Power": 5
+          }
+        ]
+      },
+      {
+        "Context": "SelfKill",
+        "Effects": [
+          {
+            "DurationType": "Impact",
+            "Type": "Damage",
+            "Power": -2
+          }
+        ]
+      }
+    ]
+  },
+  "ArrowShut": {
+    "PrefabName": "ArrowShut",
+    "Projectile": "ArrowProjectile",
+    "Appliers": [
+      {
+        "Context": "SelfActivate",
+        "Effects": [
+          {
+            "DurationType": "Infinity",
+            "Type": "LookLock"
+          }
+        ]
+      }
+    ]
+  },
+  "ArrowProjectile": {
+    "PrefabName": "ArrowProjectile",
+    "Appliers": [
+      {
+        "Context": "TargetHit",
+        "TagsInclude": "Enemy",
+        "Effects": [
+          {
+            "DurationType": "Impact",
+            "Type": "Damage",
+            "Power": 3
+          }
+        ]
+      }
+    ]
+  },
+  "DamageAura": {
+    "PrefabName": "DamageAura",
+    "HitOnce": false,
+    "Appliers": [
+      {
+        "Context": "TargetHit",
+        "TagsInclude": "Player",
+        "Effects": [
+          {
+            "DurationType": "Infinity",
+            "Type": "Damage",
+            "Power": 4
+          }
+        ]
+      }
+    ]
+  },
+  "DeadBomb": {
+    "PrefabName": "DeadBomb",
+    "Projectile": "DeadBombProjectile"
+  },
+  "DeadBombProjectile": {
+    "PrefabName": "DeadBombProjectile",
+    "Appliers": [
+      {
+        "Context": "TargetHit",
+        "TagsInclude": "Enemy",
+        "Effects": [
+          {
+            "DurationType": "Impact",
+            "Type": "Damage",
+            "Power": 6
+          }
+        ]
+      },
+      {
+        "Context": "TargetHit",
+        "TagsInclude": "Player",
+        "Effects": [
+          {
+            "DurationType": "Impact",
+            "Type": "Damage",
+            "Power": 8
+          }
+        ]
+      }
+    ]
+  }
+}

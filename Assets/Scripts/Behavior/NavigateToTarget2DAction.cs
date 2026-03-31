@@ -69,7 +69,7 @@ public partial class NavigateToTarget2DAction : Action {
     } else if (m_NavMeshAgent == null) // transform-based movement
       {
       m_CurrentSpeed = SimpleMoveTowardsLocation(distance);
-    } else if (boolUpdateTargetPosition) // navmesh-based destination update (if needed)
+    } else if (boolUpdateTargetPosition && m_NavMeshAgent.enabled) // navmesh-based destination update (if needed)
       {
       m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
     }
@@ -136,7 +136,9 @@ public partial class NavigateToTarget2DAction : Action {
       m_NavMeshAgent.speed = previousSpeed = Speed;
       m_OriginalStoppingDistance = m_NavMeshAgent.stoppingDistance;
       m_NavMeshAgent.stoppingDistance = DistanceThreshold + m_ColliderOffset;
-      m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
+      if (m_NavMeshAgent.enabled) {
+        m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
+      }
     }
 
     m_Animator = Agent.Value.GetComponentInChildren<Animator>();

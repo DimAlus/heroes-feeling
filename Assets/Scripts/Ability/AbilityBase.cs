@@ -1,6 +1,7 @@
-using NUnit.Framework;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
+using static UnityEngine.EventSystems.EventTrigger;
 
 
 public enum EAbilityTargetFinder {
@@ -9,48 +10,99 @@ public enum EAbilityTargetFinder {
 
 
 
-[System.Serializable]
-public struct FAbilityData {
-  public float Cooldown;
-  public FEffectData[] Effects;
-  public FEffectData[] SelfEffects;
-  public EAbilityTargetFinder TargetFinderType;
-  public ETag TagsInclude;
-  public ETag[] TagsExclude;
-}
 
 public class AbilityBase : MonoBehaviour {
 
+  [SerializeField]
+  protected Collider2D Collider;
+
   private AbilityAnimation aanimation;
 
-  private Entity Owner;
+  public Entity Owner { get; private set; }
 
-  public FAbilityData data { get; private set; }
+  protected List<Entity> HitedEntities = new List<Entity>();
 
-  [SerializeField]
-  private bool forceInitialize = false;
+  protected List<FPrefabInfo> AbilityPrefabs;
 
+  protected AbilityBase OuterAbility { get; private set; }
+
+  public AbilityInfoData ActivatedAbilityInfo { get; private set; }
+  public AbilityObjData AbilityData { get; private set; }
+
+  public bool IsInitialized { get; private set; }
 
   public event FTouchSignature OnCooldownEnd;
+  public event FTouchSignature OnInitialized;
+  public event FTouchSignature OnHit;
 
-
-  public void Initialize(ref FAbilityData abilityData) {
-    data = abilityData;
+  public void SetActivatedAbility(AbilityInfoData info) {
+    ActivatedAbilityInfo = info;
   }
 
-  protected virtual void Awake() {
-    if (forceInitialize) {
-      FAbilityData dt = data;
-      Initialize(ref dt);
+
+  public void Initialize(AbilityObjData abilityData, List<FPrefabInfo> prefabs, AbilityBase outerAbility = null) {
+    AbilityData = abilityData;
+    AbilityPrefabs = prefabs;
+    OuterAbility = outerAbility;
+    if (ActivatedAbilityInfo != null && ActivatedAbilityInfo.Autoactivate) {
+      Activate();
+    } else {
+      Deactivate();
     }
+    if (outerAbility != null) {
+      Owner = outerAbility.Owner;
+    } else {
+      Owner = GetComponentInParent<Entity>();
+    }
+    IsInitialized = true;
+    OnInitialized?.Invoke();
+  }
+
+
+  protected virtual void Awake() {
+    Active = false;
+    CooldownActivated = true;
     aanimation = GetComponent<AbilityAnimation>();
-    Owner = GetComponentInParent<Entity>();
+
+    if (aanimation != null) {
+      aanimation.OnAnimationStateChanging += OnAnimationStateChanging;
+    }
+  }
+
+
+  private void OnAnimationStateChanging(AbilityAnimation.EAbilityAnimationState state) {
+    switch (state) {
+    case AbilityAnimation.EAbilityAnimationState.Started:
+      ApplySelfEffects(EAbilityEffectApplyContext.SelfActivate);
+      break;
+
+    case AbilityAnimation.EAbilityAnimationState.Activated:
+      SpawnProjectile();
+      ApplySelfEffects(EAbilityEffectApplyContext.SelfAffect);
+      break;
+
+    case AbilityAnimation.EAbilityAnimationState.Ended:
+    case AbilityAnimation.EAbilityAnimationState.Canceled:
+      RemoveSelfEffects();
+      ApplySelfEffects(EAbilityEffectApplyContext.SelfDeactivate);
+      break;
+
+    default:
+      break;
+    }
   }
 
 
   protected virtual void OnTriggerEnter2D(Collider2D collision) {
     if (collision.transform.TryGetComponent(out Entity entity)) {
-      ApplyEffects(entity);
+      if (!AbilityData.HitOnce || !HitedEntities.Contains(entity)) {
+        if (ApplyEffects(entity)) {
+          OnHit?.Invoke();
+        }
+        if (AbilityData.HitOnce) {
+          HitedEntities.Add(entity);
+        }
+      }
     }
   }
 
@@ -62,7 +114,7 @@ public class AbilityBase : MonoBehaviour {
 
 
   protected void UpdateCooldown(float deltaTime) {
-    if (cooldown > 0) {
+    if (CooldownActivated && cooldown > 0) {
       cooldown -= deltaTime;
       if (cooldown < 0) {
         cooldown = 0;
@@ -74,6 +126,8 @@ public class AbilityBase : MonoBehaviour {
 
 
   protected float cooldown = 0;
+  protected bool CooldownActivated { get; set; }
+  protected bool Active { get; set; }
 
 
 
@@ -86,7 +140,7 @@ public class AbilityBase : MonoBehaviour {
   }
 
   public float GetCooldownMax() {
-    return data.Cooldown;
+    return ActivatedAbilityInfo == null ? 0 : ActivatedAbilityInfo.Cooldown;
   }
 
 
@@ -104,22 +158,97 @@ public class AbilityBase : MonoBehaviour {
 
 
   public virtual void Activate() {
-    cooldown = data.Cooldown;
+    if (AbilityData.HitOnce) {
+      HitedEntities.Clear();
+    }
+    cooldown = GetCooldownMax();
     aanimation?.StartAnimation();
-    foreach (FEffectData data in data.SelfEffects) {
-      Entity.ApplyEffect(Owner, data);
+    if (aanimation == null) {
+      SpawnProjectile();
     }
   }
 
 
-  public virtual void ApplyEffects(Entity entity) {
-    if (entity.TagContainer.TagsAgreement(data.TagsInclude, data.TagsExclude)) {
-      foreach (FEffectData data in data.Effects) {
-        Entity.ApplyEffect(entity, data);
+  private void SpawnProjectile() {
+    if (AbilityData.Projectile != null && AbilityData.Projectile != null) {
+      FPrefabInfo prefab = AbilityPrefabs.Find((FPrefabInfo el) => el.Name == AbilityData.Projectile);
+      if (prefab == null || prefab.GameObject == null) {
+        Debug.LogError($"Prefab [{AbilityData.Projectile}] not found for Projectile of Object [{Owner.EntityName}]");
+      } else {
+        GameObject newObject = Instantiate(prefab.GameObject, transform.position, new Quaternion());
+        AbilityBase ability = newObject.GetComponent<AbilityBase>();
+        ability.Initialize(AbilityData.ProjectileObj, AbilityPrefabs, OuterAbility == null ? this : OuterAbility);
+        newObject.SetActive(true);
       }
     }
   }
 
 
+  public virtual void Deactivate() {
+    CooldownActivated = true;
+    Active = false;
+  }
+
+
+  protected virtual void ApplySelfEffects(EAbilityEffectApplyContext Context) {
+    FAbilityContext context = new FAbilityContext(owner: Owner, ability: this);
+    foreach (var applier in AbilityData.Appliers) {
+      if (applier.Context == Context) {
+        foreach (var eff in applier.Effects) {
+          Owner.EffectHaver.ApplyEffect(eff, context);
+        }
+      }
+    }
+  }
+
+
+  protected virtual void RemoveSelfEffects() {
+    foreach (var applier in AbilityData.Appliers) {
+      if (applier.Context == EAbilityEffectApplyContext.SelfActivate) {
+        foreach (var eff in applier.Effects) {
+          if (eff.DurationType == FEffectData.EEffectDuration.Infinity) {
+            Owner.EffectHaver.RemoveInfinityEffect(eff.Type);
+          }
+        }
+      }
+    }
+  }
+
+
+  public virtual bool ApplyEffects(Entity entity) {
+    bool applied = false;
+    FAbilityContext context = new FAbilityContext(owner: Owner, ability: this);
+    foreach (var applier in AbilityData.Appliers) {
+      if (applier.Context == EAbilityEffectApplyContext.TargetHit) {
+        if (entity.TagContainer.TagsAgreement(applier.TagsInclude, applier.TagsExclude)) {
+          foreach (var eff in applier.Effects) {
+            entity.EffectHaver.ApplyEffect(eff, context);
+          }
+          applied = true;
+        }
+      }
+    }
+    return applied;
+  }
+
+
+  public virtual void RemoveEffects(Entity entity) {
+    foreach (var applier in AbilityData.Appliers) {
+      if (applier.Context == EAbilityEffectApplyContext.TargetHit) {
+        if (entity.TagContainer.TagsAgreement(applier.TagsInclude, applier.TagsExclude)) {
+          foreach (var eff in applier.Effects) {
+            if (eff.DurationType == FEffectData.EEffectDuration.Infinity) {
+              entity.EffectHaver.RemoveInfinityEffect(eff.Type);
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  public void OnKill(Entity killed, FAbilityContext context) {
+    ApplySelfEffects(EAbilityEffectApplyContext.SelfKill);
+  }
 
 }

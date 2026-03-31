@@ -1,54 +1,39 @@
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum AIState {
-  Idle,
-  Walk
-}
 
 
 public class EnemyAI : MonoBehaviour {
 
-  private EnemyMovement movement;
+  private Entity Entity;
+  private BehaviorGraphAgent Behavior;
 
-  [SerializeField] private AIState startState;
-  [SerializeField] private Vector2 roamingDistance = new Vector2(3f, 7f);
-  [SerializeField] private float roamingTimeMax = 2f;
-
-  private AIState state;
-  private float currentRoamingTime = 0f;
-  private Vector3 roamingTargetPosition;
+  float forceAgressiveCooldown = -1f;
+  [SerializeField] private float ForceAgressiveTime = 3f;
 
   private void Awake() {
-    movement = GetComponent<EnemyMovement>();
-    state = startState;
+    Entity = GetComponent<Entity>();
+    Behavior = GetComponent<BehaviorGraphAgent>();
   }
 
-  private void Update() {
-
-    switch (state) {
-    case AIState.Idle:
-      break;
-
-    case AIState.Walk:
-      currentRoamingTime -= Time.deltaTime;
-      if (currentRoamingTime < 0) {
-        CalculateRoaming();
-        currentRoamingTime = roamingTimeMax;
+  private void FixedUpdate() {
+    if (forceAgressiveCooldown > 0) {
+      if ((forceAgressiveCooldown -= Time.fixedDeltaTime) <= 0) {
+        Behavior.BlackboardReference.SetVariableValue<bool>(Constants.BB_FORCE_AGRESSIVE, false);
       }
-      break;
-
-    default:
-      break;
     }
   }
 
-  private void CalculateRoaming() {
-    roamingTargetPosition = CalculateRoamingPosition();
-    movement.MoveTo(roamingTargetPosition);
+  public void SetEnemyTarget(Entity enemy) {
+    Behavior.BlackboardReference.SetVariableValue<Entity>(Constants.BB_TARGET_ENEMY, enemy);
+    SetForceAgressive();
   }
 
-  private Vector3 CalculateRoamingPosition() {
-    return transform.position + Lib.RandomDirection() * Random.Range(roamingDistance.x, roamingDistance.y);
+
+  public void SetForceAgressive() {
+    forceAgressiveCooldown = ForceAgressiveTime;
+    Behavior.BlackboardReference.SetVariableValue<EAIState>(Constants.BB_AI_STATE, EAIState.Aggressive);
+    Behavior.BlackboardReference.SetVariableValue<bool>(Constants.BB_FORCE_AGRESSIVE, true);
   }
 }

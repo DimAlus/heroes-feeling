@@ -57,4 +57,19 @@ public class Society : MonoBehaviour {
     return null;
   }
 
+
+  public List<Entity> FindAllEntityAtDistance(Vector3 position, Vector2 distance, ETag includeTags, ETag[] excludeTags) {
+    List<Entity> result = new List<Entity>();
+    Vector2 sqrDistance = new Vector2(distance.x * distance.x, distance.y * distance.y);
+    foreach (Entity entity in entities) {
+      if (entity.TagContainer.TagsAgreement(includeTags, excludeTags)) {
+        float magnitude = (entity.transform.position - position).sqrMagnitude;
+        if (magnitude >= sqrDistance.x && magnitude <= sqrDistance.y) {
+          result.Add(entity);
+        }
+      }
+    }
+    return result;
+  }
+
 }

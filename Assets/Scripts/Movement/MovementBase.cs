@@ -4,6 +4,8 @@ public class MovementBase : MonoBehaviour {
 
   protected Rigidbody2D rb;
   protected EffectHaver effectHaver;
+  protected Entity entity;
+
 
   [SerializeField]
   private float movementSpeed = 1f;
@@ -18,11 +20,14 @@ public class MovementBase : MonoBehaviour {
 
 
   protected virtual void Awake() {
+    entity = GetComponent<Entity>();
     rb = GetComponent<Rigidbody2D>();
     effectHaver = GetComponent<EffectHaver>();
   }
 
   protected virtual void Start() {
+    movementSpeed = entity.EntityData.Movement.Speed;
+    runSpeed = entity.EntityData.Movement.SprintSpeed;
   }
 
   protected virtual void FixedUpdate() {
@@ -33,5 +38,8 @@ public class MovementBase : MonoBehaviour {
 
   }
 
+  public virtual void AddImpulse(Vector2 direction, float power) {
+    rb.AddForce(direction.normalized * power, ForceMode2D.Impulse);
+  }
 
 }

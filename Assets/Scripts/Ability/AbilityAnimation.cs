@@ -7,7 +7,7 @@ public class AbilityAnimation : MonoBehaviour {
   static string T_ATTACK = "Attack";
 
   public enum EAbilityAnimationState {
-    None, Started, Canceled, Ended, Activated
+    None, Started, Canceled, Ended, Activated, Exit
   }
 
 
@@ -21,12 +21,15 @@ public class AbilityAnimation : MonoBehaviour {
   private GameObject SpriteObject;
   private Animator animator;
 
+
   [SerializeField]
   private Vector3 SpritePosition;
   [SerializeField]
   private Quaternion SpriteRotation;
   [SerializeField]
   private float SpriteScale = 1;
+  [SerializeField]
+  private bool DisableAnimator = false;
 
   private AbilityBase ability;
   private TargetFinderBase targetFinder;
@@ -44,6 +47,12 @@ public class AbilityAnimation : MonoBehaviour {
       if (value == EAbilityAnimationState.Ended || value == EAbilityAnimationState.Canceled) {
         animationState = EAbilityAnimationState.None;
       }
+      if (value == EAbilityAnimationState.Exit) {
+        animationState = EAbilityAnimationState.None;
+        if (DisableAnimator) {
+          animator.enabled = false;
+        }
+      }
     }
   }
 
@@ -52,14 +61,19 @@ public class AbilityAnimation : MonoBehaviour {
     ability = GetComponent<AbilityBase>();
     animator = GetComponent<Animator>();
     targetFinder = GetComponentInParent<TargetFinderBase>();
-    SpriteObject.transform.localPosition = SpritePosition;
-    SpriteObject.transform.localRotation = SpriteRotation;
-    SpriteObject.transform.localScale = new Vector3(SpriteScale, SpriteScale, SpriteScale);
+    if (SpriteObject != null) {
+      SpriteObject.transform.localPosition = SpritePosition;
+      SpriteObject.transform.localRotation = SpriteRotation;
+      SpriteObject.transform.localScale = new Vector3(SpriteScale, SpriteScale, SpriteScale);
+    }
   }
 
 
   public void StartAnimation() {
-    Vector3 location = targetFinder.FindTarget(ability.data.TargetType, ability.data.TargetFinderType) - transform.parent.position;
+    if (DisableAnimator) {
+      animator.enabled = true;
+    }
+    Vector3 location = targetFinder.FindTarget(EAbilityTargetFinder.LookDirection) - transform.parent.position;
     location.Normalize();
     float angle = Mathf.Rad2Deg * Mathf.Atan2(location.y, location.x);
     transform.localRotation = Quaternion.Euler(0, 0, angle);

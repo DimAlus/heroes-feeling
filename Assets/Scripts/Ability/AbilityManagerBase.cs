@@ -2,65 +2,100 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class AbilityManagerBase : MonoBehaviour {
+[System.Serializable]
+public class FPrefabInfo {
+  public string Name;
+  public GameObject GameObject;
+  public bool Exists;
+}
 
-  [System.Serializable]
-  protected struct FAbilityPrefabInfo {
-    public EAbilitySlot Slot;
-    public GameObject Prefab;
-    public FAbilityData AbilityInitializer;
-    public bool LockMovement;
-    public bool LockLook;
-  }
+
+public class AbilityManagerBase : MonoBehaviour {
 
 
   [SerializeField]
-  protected List<FAbilityPrefabInfo> AbilitiesData = new List<FAbilityPrefabInfo>();
+  protected List<FPrefabInfo> AbilityPrefabs = new List<FPrefabInfo>();
 
   protected Dictionary<EAbilitySlot, AbilityBase> Abilities = new Dictionary<EAbilitySlot, AbilityBase>();
 
 
-  private EffectHaver effectHaver;
-
+  private Entity entity;
+  private AbilityData abilityData;
 
 
   protected virtual void Awake() {
-    effectHaver = GetComponent<EffectHaver>();
-    AbilitiesData.ForEach(info => {
-      if (Abilities.ContainsKey(info.Slot)) {
-        return;
-      }
-      GameObject newObject;
-      if (info.Prefab.gameObject.scene.rootCount == 0) {
-        newObject = Instantiate(info.Prefab, transform.position, new Quaternion(), transform);
-      } else {
-        newObject = info.Prefab;
-      }
-      AbilityBase ability = newObject.GetComponent<AbilityBase>();
-      Abilities.Add(info.Slot, ability);
-      ability.Initialize(ref info.AbilityInitializer);
-
-      AbilityAnimation anim = newObject.GetComponent<AbilityAnimation>();
-      if (info.LockMovement) {
-        anim.OnAnimationStateChanging += (AbilityAnimation.EAbilityAnimationState state) => {
-          if (state == AbilityAnimation.EAbilityAnimationState.Started) {
-            effectHaver.ApplyEffect(EEffectType.MovementLock);
-          } else if (state == AbilityAnimation.EAbilityAnimationState.Canceled || state == AbilityAnimation.EAbilityAnimationState.Ended) {
-            effectHaver.RemoveEffect(EEffectType.MovementLock);
-          }
-        };
-      }
-      if (info.LockLook) {
-        anim.OnAnimationStateChanging += (AbilityAnimation.EAbilityAnimationState state) => {
-          if (state == AbilityAnimation.EAbilityAnimationState.Started) {
-            effectHaver.ApplyEffect(EEffectType.LookLock);
-          } else if (state == AbilityAnimation.EAbilityAnimationState.Canceled || state == AbilityAnimation.EAbilityAnimationState.Ended) {
-            effectHaver.RemoveEffect(EEffectType.LookLock);
-          }
-        };
-      }
-    });
+    entity = GetComponent<Entity>();
   }
 
+  protected void Start() {
+    if (entity.EntityData.Ability?.Abilities != null) {
+      abilityData = entity.EntityData.Ability;
+      foreach (var item in abilityData.Abilities) {
+        GameObject newObject;
+        FPrefabInfo prefab = AbilityPrefabs.Find((FPrefabInfo el) => el.Name == item.Value.AbilityObj.PrefabName);
+
+        if (prefab == null || prefab.GameObject == null) {
+          Debug.LogError($"Prefab [{item.Value.AbilityObj.PrefabName}] not found for Ability [{item.Key}] of Object [{entity.EntityName}]");
+          continue;
+        }
+        if (prefab.GameObject.gameObject.scene.rootCount == 0) {
+          newObject = Instantiate(prefab.GameObject, transform.position, new Quaternion(), transform);
+        } else {
+          newObject = prefab.GameObject;
+        }
+
+
+        AbilityBase ability = newObject.GetComponent<AbilityBase>();
+        Abilities.Add(item.Key, ability);
+        ability.SetActivatedAbility(item.Value);
+        ability.Initialize(item.Value.AbilityObj, AbilityPrefabs);
+
+        AbilityAnimation anim = newObject.GetComponent<AbilityAnimation>();
+
+        if (item.Key == EAbilitySlot.Death) {
+          entity.OnDead += (FAbilityContext context) => {
+            ability.Activate();
+          };
+        }
+
+      }
+    }
+  }
+
+
+  [ContextMenu("Load Ability Data")]
+  protected void UpdateAbilityPrefabsList() {
+    Entity entity = GetComponent<Entity>();
+    GameData.LoadData();
+
+    AbilityPrefabs.ForEach((FPrefabInfo info) => info.Exists = false);
+
+    EntityData data = GameData.GetEntityData(entity.EntityName);
+    if (data == null) {
+      Debug.LogError($"Entity data not found for [{entity.EntityName}]");
+    }
+
+    var abilities = data.Ability?.Abilities;
+    if (abilities == null) {
+      return;
+    }
+
+    foreach (var item in abilities) {
+      UpdateAbilityPrefabNames(item.Value.AbilityObj);
+    }
+  }
+
+
+  private void UpdateAbilityPrefabNames(AbilityObjData data) {
+    FPrefabInfo prefab = AbilityPrefabs.Find((FPrefabInfo p) => p.Name == data.PrefabName);
+    if (prefab == null) {
+      AbilityPrefabs.Add(new FPrefabInfo { Name = data.PrefabName, Exists = true, GameObject = null });
+    } else {
+      prefab.Exists = true;
+    }
+    if (data.ProjectileObj != null) {
+      UpdateAbilityPrefabNames(data.ProjectileObj);
+    }
+  }
 
 }

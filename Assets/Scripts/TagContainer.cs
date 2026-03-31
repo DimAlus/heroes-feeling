@@ -18,11 +18,13 @@ public class TagContainer : MonoBehaviour {
 
 
   public bool TagsAgreement(ETag includeTags, ETag[] excludeTags) {
-    foreach (ETag exclude in excludeTags) {
-      if (HasTag(exclude)) {
-        return false;
+    if (excludeTags != null) {
+      foreach (ETag exclude in excludeTags) {
+        if (HasTag(exclude)) {
+          return false;
+        }
       }
     }
-    return HasTag(includeTags);
+    return HasTag(includeTags) || includeTags == 0;
   }
 }
