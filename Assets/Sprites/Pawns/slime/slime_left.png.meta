@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 0be2cdd920bc8784b815510573965596
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -41563759479715474
+    second: slime_left_0
+  - first:
+      213: 4514822278096600333
+    second: slime_left_1
+  - first:
+      213: -3866145091796508746
+    second: slime_left_2
+  - first:
+      213: 3609181479083061293
+    second: slime_left_3
+  - first:
+      213: 5333522898948207053
+    second: slime_left_4
+  - first:
+      213: -3401999902505249105
+    second: slime_left_5
+  - first:
+      213: -6587867860496919676
+    second: slime_left_6
+  - first:
+      213: 1209343657813649122
+    second: slime_left_7
+  - first:
+      213: 4185763489692083486
+    second: slime_left_8
+  - first:
+      213: 4432715179748173381
+    second: slime_left_9
+  - first:
+      213: -3219302091108505665
+    second: slime_left_10
+  - first:
+      213: 8065506290855130522
+    second: slime_left_11
+  - first:
+      213: 7376506030044200427
+    second: slime_left_12
+  - first:
+      213: 438654740300044468
+    second: slime_left_13
+  - first:
+      213: 2832746090486548841
+    second: slime_left_14
+  - first:
+      213: -6986526330465385574
+    second: slime_left_15
+  - first:
+      213: -8997234594854237068
+    second: slime_left_16
+  - first:
+      213: 7184697218570653191
+    second: slime_left_17
+  - first:
+      213: -7414112741364471043
+    second: slime_left_18
+  - first:
+      213: -60223117403342600
+    second: slime_left_19
+  - first:
+      213: -2145493182860365601
+    second: slime_left_20
+  - first:
+      213: 7485613033426213093
+    second: slime_left_21
+  - first:
+      213: -7276091406628362387
+    second: slime_left_22
+  - first:
+      213: -2615255115668240997
+    second: slime_left_23
+  - first:
+      213: -2750725713408639765
+    second: slime_left_24
+  - first:
+      213: 6020328310788113058
+    second: slime_left_25
+  - first:
+      213: 5150689445151870290
+    second: slime_left_26
+  - first:
+      213: 4937318036590859387
+    second: slime_left_27
+  - first:
+      213: -6558707066634798999
+    second: slime_left_28
+  - first:
+      213: -642525524026934977
+    second: slime_left_29
+  - first:
+      213: -8073092624687239519
+    second: slime_left_30
+  - first:
+      213: 8117713992697178976
+    second: slime_left_31
+  - first:
+      213: 9213113174248237455
+    second: slime_left_32
+  - first:
+      213: -6868104130632709235
+    second: slime_left_33
+  - first:
+      213: -7296761545311852248
+    second: slime_left_34
+  - first:
+      213: 2579625281484027726
+    second: slime_left_35
+  - first:
+      213: 6085398741901693689
+    second: slime_left_36
+  - first:
+      213: -6431489649935395831
+    second: slime_left_37
+  - first:
+      213: -659413965323224106
+    second: slime_left_38
+  - first:
+      213: 4936610255138069942
+    second: slime_left_39
+  - first:
+      213: 1486477062999518882
+    second: slime_left_40
+  - first:
+      213: -1728523173424515064
+    second: slime_left_41
+  - first:
+      213: -3948606011907328103
+    second: slime_left_42
+  - first:
+      213: 4882282404718519179
+    second: slime_left_43
+  - first:
+      213: 5922725387612958427
+    second: slime_left_44
+  - first:
+      213: -6399982874559101063
+    second: slime_left_45
+  - first:
+      213: 1321132803916028315
+    second: slime_left_46
+  - first:
+      213: -2554519596368631928
+    second: slime_left_47
+  - first:
+      213: 4743508749537465062
+    second: slime_left_48
+  - first:
+      213: 7828396530561451837
+    second: slime_left_49
+  - first:
+      213: 862070827794875501
+    second: slime_left_50
+  - first:
+      213: -6246757486371955367
+    second: slime_left_51
+  - first:
+      213: -2313010086915712220
+    second: slime_left_52
+  - first:
+      213: 3576808530505848340
+    second: slime_left_53
+  - first:
+      213: 5463775357700742490
+    second: slime_left_54
+  - first:
+      213: -3985075609188377962
+    second: slime_left_55
+  - first:
+      213: -6260413072563204753
+    second: slime_left_56
+  - first:
+      213: -5706269596639888398
+    second: slime_left_57
+  - first:
+      213: -4961312973153747034
+    second: slime_left_58
+  - first:
+      213: -3190154042165216833
+    second: slime_left_59
+  - first:
+      213: 3371526903683700682
+    second: slime_left_60
+  - first:
+      213: -3074803956001386284
+    second: slime_left_61
+  - first:
+      213: -6147968074843364745
+    second: slime_left_62
+  - first:
+      213: -5305830224590647872
+    second: slime_left_63
+  - first:
+      213: -301305871634683919
+    second: slime_left_64
+  - first:
+      213: -2305110373507267213
+    second: slime_left_65
+  - first:
+      213: -3440706006299485891
+    second: slime_left_66
+  - first:
+      213: 6490170708797107172
+    second: slime_left_67
+  - first:
+      213: 5659818230277741847
+    second: slime_left_68
+  - first:
+      213: -542504992799384011
+    second: slime_left_69
+  - first:
+      213: 3471291753369896183
+    second: slime_left_70
+  - first:
+      213: -360504915975265108
+    second: slime_left_71
+  - first:
+      213: 7372395725628136910
+    second: slime_left_72
+  - first:
+      213: 661318211143418157
+    second: slime_left_73
+  - first:
+      213: -2160711861926867469
+    second: slime_left_74
+  - first:
+      213: -2792188125550777453
+    second: slime_left_75
+  - first:
+      213: 8959555378957811301
+    second: slime_left_76
+  - first:
+      213: 3166263216819358186
+    second: slime_left_77
+  - first:
+      213: -8275168898804776756
+    second: slime_left_78
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slime_left_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1383181da740a40800000000000000
+      internalID: 5333522898948207053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 352
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa6d24dfc1ba9c0d0800000000000000
+      internalID: -3401999902505249105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4835edbb5113394a0800000000000000
+      internalID: -6587867860496919676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 352
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6aa5f36a378c010800000000000000
+      internalID: 1209343657813649122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfae54e4eb7cb1990800000000000000
+      internalID: -7414112741364471043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f838efc46b0a2ff0800000000000000
+      internalID: -60223117403342600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd0f597415da932e0800000000000000
+      internalID: -2145493182860365601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e85767b46d32e760800000000000000
+      internalID: 7485613033426213093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d67e4a28a61260b90800000000000000
+      internalID: -7276091406628362387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b954299145fb4bbd0800000000000000
+      internalID: -2615255115668240997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 904dff62d32ceb6a0800000000000000
+      internalID: -6431489649935395831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db3af40e7a49d6f0800000000000000
+      internalID: -659413965323224106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd1e0c2fdc528440800000000000000
+      internalID: 4936610255138069942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae2ada530701a410800000000000000
+      internalID: 1486477062999518882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8083006f45d0308e0800000000000000
+      internalID: -1728523173424515064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 997ba46b0cbb339c0800000000000000
+      internalID: -3948606011907328103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_43
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83236acaf951c340800000000000000
+      internalID: 4882282404718519179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_54
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d19405dba33db40800000000000000
+      internalID: 5463775357700742490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_55
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ad047e8da22b8c0800000000000000
+      internalID: -3985075609188377962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_56
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d88a6ca7b8e19a0800000000000000
+      internalID: -6260413072563204753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_60
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac75db41bd11ace20800000000000000
+      internalID: 3371526903683700682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_61
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d05290d71a1455d0800000000000000
+      internalID: -3074803956001386284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_62
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 772e488fb970eaaa0800000000000000
+      internalID: -6147968074843364745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_63
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd4eb0b587ed56b0800000000000000
+      internalID: -5305830224590647872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_left_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7a978f7eb81dbf0800000000000000
+      internalID: -301305871634683919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8f38b3388d37d1c4ba725bbed84f62f4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":13.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.25},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      slime_left_0: -41563759479715474
+      slime_left_1: 4514822278096600333
+      slime_left_10: -3219302091108505665
+      slime_left_11: 8065506290855130522
+      slime_left_12: 7376506030044200427
+      slime_left_13: 438654740300044468
+      slime_left_14: 2832746090486548841
+      slime_left_15: -6986526330465385574
+      slime_left_16: -8997234594854237068
+      slime_left_17: 7184697218570653191
+      slime_left_18: -7414112741364471043
+      slime_left_19: -60223117403342600
+      slime_left_2: -3866145091796508746
+      slime_left_20: -2145493182860365601
+      slime_left_21: 7485613033426213093
+      slime_left_22: -7276091406628362387
+      slime_left_23: -2615255115668240997
+      slime_left_24: -2750725713408639765
+      slime_left_25: 6020328310788113058
+      slime_left_26: 5150689445151870290
+      slime_left_27: 4937318036590859387
+      slime_left_28: -6558707066634798999
+      slime_left_29: -642525524026934977
+      slime_left_3: 3609181479083061293
+      slime_left_30: -8073092624687239519
+      slime_left_31: 8117713992697178976
+      slime_left_32: 9213113174248237455
+      slime_left_33: -6868104130632709235
+      slime_left_34: -7296761545311852248
+      slime_left_35: 2579625281484027726
+      slime_left_36: 6085398741901693689
+      slime_left_37: -6431489649935395831
+      slime_left_38: -659413965323224106
+      slime_left_39: 4936610255138069942
+      slime_left_4: 5333522898948207053
+      slime_left_40: 1486477062999518882
+      slime_left_41: -1728523173424515064
+      slime_left_42: -3948606011907328103
+      slime_left_43: 4882282404718519179
+      slime_left_44: 5922725387612958427
+      slime_left_45: -6399982874559101063
+      slime_left_46: 1321132803916028315
+      slime_left_47: -2554519596368631928
+      slime_left_48: 4743508749537465062
+      slime_left_49: 7828396530561451837
+      slime_left_5: -3401999902505249105
+      slime_left_50: 862070827794875501
+      slime_left_51: -6246757486371955367
+      slime_left_52: -2313010086915712220
+      slime_left_53: 3576808530505848340
+      slime_left_54: 5463775357700742490
+      slime_left_55: -3985075609188377962
+      slime_left_56: -6260413072563204753
+      slime_left_57: -5706269596639888398
+      slime_left_58: -4961312973153747034
+      slime_left_59: -3190154042165216833
+      slime_left_6: -6587867860496919676
+      slime_left_60: 3371526903683700682
+      slime_left_61: -3074803956001386284
+      slime_left_62: -6147968074843364745
+      slime_left_63: -5305830224590647872
+      slime_left_64: -301305871634683919
+      slime_left_7: 1209343657813649122
+      slime_left_8: 4185763489692083486
+      slime_left_9: 4432715179748173381
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

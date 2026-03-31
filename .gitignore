@@ -3,6 +3,8 @@ Packages/*
 !Packages/manifest.json
 !Packages/packages-lock.json
 
+**/ThirdParty/*
+
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,unity
 
@@ -151,7 +153,6 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.meta
 *.obj
 *.iobj
 *.pch
