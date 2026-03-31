@@ -1,3 +1,8 @@
+
+Packages/*
+!Packages/manifest.json
+!Packages/packages-lock.json
+
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,unity
 
@@ -265,7 +270,7 @@ PublishScripts/
 # NuGet Symbol Packages
 *.snupkg
 # The packages folder can be ignored because of Package Restore
-**/[Pp]ackages/*
+#**/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
