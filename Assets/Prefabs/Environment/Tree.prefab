@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617905192794070282}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.988635, y: -1.2565541, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 178370172, guid: 2e4966a666aa6cf43a7bfc330cd6a8ff, type: 3}
+  m_Sprite: {fileID: 6041240624108988605, guid: bf26310a2a8fcf548969f49a45d515bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,8 +127,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0055703027, y: 0.16940384}
-  m_Size: {x: 0.79607457, y: 0.39985383}
+  m_Offset: {x: 0.007834195, y: -0.01825339}
+  m_Size: {x: 1.7134624, y: 1.043258}
   m_Direction: 1
 --- !u!114 &2569212159315202557
 MonoBehaviour:

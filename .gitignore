@@ -1,3 +1,5 @@
+.vscode
+
 
 Packages/*
 !Packages/manifest.json

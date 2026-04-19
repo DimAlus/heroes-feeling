@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 409129269249581790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.519, z: 0}
+  m_LocalPosition: {x: 0, y: 1.348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +82,7 @@ Transform:
   m_GameObject: {fileID: 1504273533051436182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8147, y: -0.55866, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 20
+  bDead: 0
 --- !u!114 &9136735500551781595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c275741f5d5c54e48874a297ce183f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  movementSpeed: 2
-  runSpeed: 20
+  movementSpeed: 4
+  runSpeed: 40
 --- !u!114 &7922127408593306814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c02a9f0b3c79c149b9a00397779295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  ForceAgressiveTime: 3
 --- !u!1 &4024804376635048292
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +546,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 368543389579951487, guid: 4bffa934e00ae2d48981c70454e9d72e, type: 3}
+  m_Sprite: {fileID: 2890604130156774178, guid: bf26310a2a8fcf548969f49a45d515bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -590,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1959536073878991865, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 1959536073878991865, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -638,11 +640,15 @@ PrefabInstance:
       objectReference: {fileID: 6247343939087807216}
     - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0059309006
       objectReference: {fileID: 0}
     - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_Offset.y
@@ -712,9 +718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityAnimation
   SpriteObject: {fileID: 4024804376635048292}
-  SpritePosition: {x: 0, y: 0, z: 0}
+  SpritePosition: {x: 0, y: 0.36, z: 0}
   SpriteRotation: {x: 0, y: 0, z: 0, w: 0}
-  SpriteScale: 1
+  SpriteScale: 1.8
   DisableAnimator: 0
 --- !u!114 &2997212773143866187
 MonoBehaviour:
@@ -941,11 +947,15 @@ PrefabInstance:
       objectReference: {fileID: 5249724536240557530}
     - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_Radius
-      value: 0.4
+      value: 0.6761992
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.019935846
       objectReference: {fileID: 0}
     - target: {fileID: 8225696156891252960, guid: 259d8c5df779d6d46ab36846be7c112c, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.32352114
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

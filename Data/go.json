@@ -4,8 +4,8 @@
       "MaxHealth": 20
     },
     "Movement": {
-      "Speed": 2,
-      "SprintSpeed": 20
+      "Speed": 4,
+      "SprintSpeed": 40
     },
     "Ability": {
       "Abilities": {
@@ -24,7 +24,7 @@
       "MaxHealth": 20
     },
     "Movement": {
-      "Speed": 2
+      "Speed": 6
     },
     "Ability": {
       "Abilities": {
